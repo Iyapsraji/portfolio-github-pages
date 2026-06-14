@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iyappan C — Creative Operations &amp; Design Leadership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F0F4F9;
+    --panel:#FFFFFF;
+    --ink:#101B2D;
+    --ink-soft:#56657C;
+    --line:#D5DEEC;
+    --teal:#2E5C9A;
+    --teal-soft:#DEE7F5;
+    --coral:#1B3A6B;
+    --maxw:1100px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+
+  /* ===== MASTHEAD ===== */
+  .masthead{
+    border-bottom:2px solid var(--ink);
+    padding:20px 0;
+  }
+  .masthead .wrap{
+    display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:12px;
+  }
+  .masthead .mark{
+    font-family:'Fraunces', serif; font-weight:700; font-size:20px; letter-spacing:.02em;
+  }
+  .masthead .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    padding:72px 0 56px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.4fr 1fr; gap:48px; align-items:end;
+  }
+  .hero-eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--coral); margin-bottom:18px;
+  }
+  h1{
+    font-family:'Fraunces', serif; font-weight:700; font-size:clamp(40px, 6vw, 68px);
+    letter-spacing:-0.01em; line-height:1.04; margin-bottom:20px;
+  }
+  h1 .accent{ color:var(--teal); font-style:italic; font-weight:500; }
+  .hero-sub{
+    font-size:17px; color:var(--ink-soft); max-width:620px; margin-bottom:24px;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:18px 28px;
+    font-family:'IBM Plex Mono', monospace; font-size:13px;
+  }
+  .hero-meta a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:1px; transition:.2s; }
+  .hero-meta a:hover{ border-color:var(--teal); color:var(--teal); }
+
+  /* Ticker / impact strip */
+  .ticker{
+    border:1px solid var(--line); background:var(--panel);
+    padding:26px 28px;
+  }
+  .ticker .label{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--ink-soft); margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .ticker .label::before{ content:''; width:8px; height:8px; background:var(--coral); border-radius:50%; flex-shrink:0; }
+  .ticker .row{
+    display:flex; justify-content:space-between; align-items:baseline; padding:10px 0;
+    border-top:1px solid var(--line);
+  }
+  .ticker .row:first-of-type{ border-top:none; padding-top:0; }
+  .ticker .num{
+    font-family:'Fraunces', serif; font-weight:600; font-size:28px; color:var(--teal);
+  }
+  .ticker .desc{ font-size:12.5px; color:var(--ink-soft); text-align:right; max-width:160px; }
+
+  /* ===== SECTION HEADS ===== */
+  section{ padding:64px 0; }
+  .section-head{
+    display:flex; align-items:baseline; gap:16px; margin-bottom:36px;
+  }
+  .section-head .idx{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--coral); letter-spacing:.1em;
+  }
+  .section-head h2{
+    font-family:'Fraunces', serif; font-weight:600; font-size:30px;
+  }
+  .section-head::after{ content:''; flex:1; height:1px; background:var(--line); align-self:center; }
+
+  /* ===== SUMMARY ===== */
+  .summary p{ font-size:17px; color:#1C2A40; max-width:760px; }
+  .summary p + p{ margin-top:14px; }
+
+  /* ===== CORE EXPERTISE ===== */
+  .expertise-row{ border-top:1px solid var(--ink); }
+  .expertise-grid{
+    display:grid; grid-template-columns:repeat(5, 1fr);
+  }
+  .expertise-grid div{
+    border-bottom:1px solid var(--ink); border-right:1px solid var(--ink);
+    padding:18px 16px; font-size:13.5px; font-weight:500;
+    display:flex; align-items:center; min-height:78px;
+  }
+  .expertise-grid div:nth-child(5n){ border-right:none; }
+
+  /* ===== CASE STUDIES (signature: deal tombstones) ===== */
+  .tombstone{
+    border:1px solid var(--ink); background:var(--panel);
+    margin-bottom:32px;
+    display:grid; grid-template-columns:64px 1fr;
+  }
+  .tombstone:last-child{ margin-bottom:0; }
+  .tombstone-num{
+    background:var(--ink); color:var(--paper);
+    font-family:'Fraunces', serif; font-weight:600; font-size:22px;
+    display:flex; align-items:flex-start; justify-content:center; padding-top:28px;
+    writing-mode:vertical-rl; text-orientation:mixed;
+  }
+  .tombstone-body{ padding:28px 32px; }
+  .tombstone-head{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;
+    margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid var(--line);
+  }
+  .tombstone-head h3{
+    font-family:'Fraunces', serif; font-weight:600; font-size:24px; max-width:560px; line-height:1.25;
+  }
+  .tombstone-head .results-pill{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.05em;
+    background:var(--teal-soft); color:var(--teal); border:1px solid var(--teal);
+    padding:6px 14px; white-space:nowrap;
+  }
+  .cs-cols{
+    display:grid; grid-template-columns:1fr 1.3fr 1fr; gap:28px;
+  }
+  .cs-col .ck-label{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--coral); margin-bottom:10px; display:block;
+  }
+  .cs-col p{ font-size:14px; color:var(--ink-soft); }
+  .cs-col ul{ list-style:none; }
+  .cs-col li{
+    font-size:14px; color:var(--ink-soft); padding-left:16px; position:relative; margin-bottom:8px;
+  }
+  .cs-col li::before{ content:'—'; position:absolute; left:0; color:var(--line); }
+  .cs-col.results li{ color:var(--ink); font-weight:500; }
+  .cs-col.results li::before{ content:'✓'; color:var(--teal); font-weight:600; }
+
+  /* ===== LEADERSHIP ===== */
+  .leadership-list{ list-style:none; max-width:760px; }
+  .leadership-list li{
+    font-size:16px; padding:16px 0; border-bottom:1px solid var(--line);
+    display:grid; grid-template-columns:28px 1fr; gap:14px;
+  }
+  .leadership-list li:first-child{ padding-top:0; }
+  .leadership-list li::before{
+    content:''; width:10px; height:10px; border-radius:50%; background:var(--teal);
+    margin-top:7px;
+  }
+
+  /* ===== CAPABILITIES + TOOLS ===== */
+  .two-col{ display:grid; grid-template-columns:1.2fr 1fr; gap:48px; }
+  .pill-grid{ display:flex; flex-wrap:wrap; gap:10px; }
+  .pill{
+    font-size:13.5px; padding:9px 16px; border:1px solid var(--ink); border-radius:30px;
+    font-weight:500;
+  }
+  .tool-list{ list-style:none; }
+  .tool-list li{
+    font-family:'IBM Plex Mono', monospace; font-size:13.5px; padding:12px 0;
+    border-bottom:1px solid var(--line); display:flex; justify-content:space-between;
+  }
+  .tool-list li:first-child{ padding-top:0; }
+  .tool-list li span{ color:var(--ink-soft); font-size:11px; letter-spacing:.1em; text-transform:uppercase; }
+
+  /* ===== IMPACT SUMMARY ===== */
+  .impact{ background:var(--ink); color:var(--paper); }
+  .impact .section-head h2{ color:var(--paper); }
+  .impact .section-head .idx{ color:var(--coral); }
+  .impact .section-head::after{ background:rgba(240,244,249,0.15); }
+  .impact-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(240,244,249,0.15); border:1px solid rgba(240,244,249,0.15); }
+  .impact-card{ background:var(--ink); padding:32px 28px; }
+  .impact-card .glyph{ font-family:'Fraunces', serif; font-size:34px; color:var(--coral); margin-bottom:14px; display:block; }
+  .impact-card p{ font-size:15px; color:rgba(240,244,249,0.85); }
+
+  /* ===== CONTACT / FOOTER ===== */
+  .contact-band{ border-top:2px solid var(--ink); padding:56px 0; }
+  .contact-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:center; }
+  .contact-grid h2{
+    font-family:'Fraunces', serif; font-weight:600; font-size:32px; line-height:1.2; margin-bottom:14px;
+  }
+  .contact-grid p{ color:var(--ink-soft); font-size:15px; max-width:480px; }
+  .contact-links{ display:flex; flex-direction:column; gap:14px; }
+  .contact-links a{
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'IBM Plex Mono', monospace; font-size:13.5px;
+    padding:14px 18px; border:1px solid var(--ink); text-decoration:none; color:var(--ink);
+    transition:.2s;
+  }
+  .contact-links a:hover{ background:var(--teal); border-color:var(--teal); color:var(--paper); }
+  .contact-links a .arrow{ transition:.2s; }
+  .contact-links a:hover .arrow{ transform:translateX(4px); }
+
+  footer{
+    border-top:1px solid var(--line); padding:24px 0; text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-soft); letter-spacing:.08em;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 920px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .expertise-grid{ grid-template-columns:repeat(2,1fr); }
+    .expertise-grid div:nth-child(5n){ border-right:1px solid var(--ink); }
+    .expertise-grid div:nth-child(2n){ border-right:none; }
+    .cs-cols{ grid-template-columns:1fr; gap:20px; }
+    .two-col{ grid-template-columns:1fr; gap:32px; }
+    .impact-grid{ grid-template-columns:1fr; }
+    .contact-grid{ grid-template-columns:1fr; }
+  }
+  @media (max-width: 600px){
+    .wrap{ padding:0 20px; }
+    .tombstone{ grid-template-columns:1fr; }
+    .tombstone-num{ writing-mode:horizontal-tb; padding:10px 16px; flex-direction:row; }
+    .tombstone-head{ flex-direction:column; }
+  }
+
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--teal); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="wrap">
+    <div class="mark">Iyappan C.</div>
+    <div class="tag">Portfolio · Creative Operations</div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">Design Strategy / Creative Leadership</div>
+        <h1>Creative Operations<br>for <span class="accent">global finance</span></h1>
+        <p class="hero-sub">Creative operations and design delivery leader supporting global investment banking teams through high-impact visual communication, pitch book design, and strategic presentation storytelling — with a focus on scalable workflows, automation, and global creative delivery.</p>
+        <div class="hero-meta">
+          <a href="mailto:iyapsraji2023@gmail.com">iyapsraji2023@gmail.com</a>
+          <a href="https://www.linkedin.com/in/iyapsraji/" target="_blank" rel="noopener">linkedin.com/in/iyapsraji</a>
+          <a href="https://iyappancrajamanager.my.canva.site/" target="_blank" rel="noopener">Profile ↗</a>
+          <span style="color:var(--ink-soft)">Chennai, India</span>
+        </div>
+      </div>
+      <div class="ticker">
+        <div class="label">Headline Results</div>
+        <div class="row"><span class="num">99%</span><span class="desc">Delivery accuracy on global pitch book production</span></div>
+        <div class="row"><span class="num">24/7</span><span class="desc">Follow-the-sun creative delivery model</span></div>
+        <div class="row"><span class="num">3</span><span class="desc">Major operating models built &amp; scaled</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="summary">
+  <div class="wrap">
+    <div class="section-head"><span class="idx">01</span><h2>Professional Summary</h2></div>
+    <p>Creative operations and design delivery leader with extensive experience supporting global investment banking teams through high-impact visual communication, pitch book design, and strategic presentation storytelling. Proven expertise in building scalable design workflows, implementing automation tools, and managing global creative teams delivering high-quality visual assets across digital and print platforms.</p>
+    <p>Experienced in translating complex business narratives into compelling visual formats while ensuring brand consistency, design quality, and operational efficiency.</p>
+  </div>
+</section>
+
+<section class="expertise-row">
+  <div class="wrap" style="padding:0;">
+    <div class="section-head" style="padding:64px 32px 36px;"><span class="idx">02</span><h2>Core Expertise</h2></div>
+    <div class="expertise-grid">
+      <div>Design Operations Leadership</div>
+      <div>Creative Workflow Optimization</div>
+      <div>Visual Communication Strategy</div>
+      <div>Brand Consistency &amp; Governance</div>
+      <div>Presentation &amp; Pitchbook Design</div>
+      <div>Data Visualization</div>
+      <div>Cross-Functional Collaboration</div>
+      <div>Automation &amp; Workflow Systems</div>
+      <div>Global Creative Delivery</div>
+      <div>Stakeholder Management</div>
+    </div>
+  </div>
+</section>
+
+<section class="case-studies">
+  <div class="wrap">
+    <div class="section-head"><span class="idx">03</span><h2>Case Studies</h2></div>
+
+    <div class="tombstone">
+      <div class="tombstone-num">01</div>
+      <div class="tombstone-body">
+        <div class="tombstone-head">
+          <h3>Global Investment Banking Creative Delivery</h3>
+          <span class="results-pill">99% delivery accuracy</span>
+        </div>
+        <div class="cs-cols">
+          <div class="cs-col">
+            <span class="ck-label">Challenge</span>
+            <p>Investment bankers required high-quality pitch books, IPO roadshow presentations, and M&amp;A deal materials with extremely tight turnaround times while maintaining visual consistency and accuracy.</p>
+          </div>
+          <div class="cs-col">
+            <span class="ck-label">Actions</span>
+            <ul>
+              <li>Built a structured creative delivery workflow for presentation design</li>
+              <li>Implemented quality assurance checkpoints for visual and content accuracy</li>
+              <li>Established standardized templates and presentation frameworks</li>
+            </ul>
+          </div>
+          <div class="cs-col results">
+            <span class="ck-label">Results</span>
+            <ul>
+              <li>99% delivery accuracy achieved</li>
+              <li>Faster turnaround time for pitch book production</li>
+              <li>Consistent visual standards across global deliverables</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tombstone">
+      <div class="tombstone-num">02</div>
+      <div class="tombstone-body">
+        <div class="tombstone-head">
+          <h3>Creative Workflow Automation</h3>
+          <span class="results-pill">Real-time SLA tracking</span>
+        </div>
+        <div class="cs-cols">
+          <div class="cs-col">
+            <span class="ck-label">Challenge</span>
+            <p>Manual processes slowed down design request tracking, delivery monitoring, and operational reporting.</p>
+          </div>
+          <div class="cs-col">
+            <span class="ck-label">Actions</span>
+            <ul>
+              <li>Implemented Power BI dashboards for real-time SLA tracking</li>
+              <li>Built Power Apps and Power Automate workflows for request management</li>
+              <li>Introduced automated KPI reporting for leadership visibility</li>
+            </ul>
+          </div>
+          <div class="cs-col results">
+            <span class="ck-label">Results</span>
+            <ul>
+              <li>Improved operational transparency</li>
+              <li>Reduced manual reporting workload</li>
+              <li>Enhanced data-driven decision making</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tombstone">
+      <div class="tombstone-num">03</div>
+      <div class="tombstone-body">
+        <div class="tombstone-head">
+          <h3>Global Creative Operations Model</h3>
+          <span class="results-pill">24/7 follow-the-sun</span>
+        </div>
+        <div class="cs-cols">
+          <div class="cs-col">
+            <span class="ck-label">Challenge</span>
+            <p>Supporting global banking teams required round-the-clock creative production capability.</p>
+          </div>
+          <div class="cs-col">
+            <span class="ck-label">Actions</span>
+            <ul>
+              <li>Established a 24/7 follow-the-sun creative delivery model</li>
+              <li>Structured shift-based creative production teams</li>
+              <li>Implemented productivity and quality monitoring frameworks</li>
+            </ul>
+          </div>
+          <div class="cs-col results">
+            <span class="ck-label">Results</span>
+            <ul>
+              <li>Continuous support for global clients</li>
+              <li>Improved delivery efficiency</li>
+              <li>Increased stakeholder satisfaction</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="leadership">
+  <div class="wrap">
+    <div class="section-head"><span class="idx">04</span><h2>Leadership &amp; Team Development</h2></div>
+    <ul class="leadership-list">
+      <li>Led multi-layered creative production teams across global shifts</li>
+      <li>Developed structured mentoring programs to build future team leaders</li>
+      <li>Established performance frameworks focused on quality and accountability</li>
+    </ul>
+  </div>
+</section>
+
+<section class="capabilities">
+  <div class="wrap">
+    <div class="section-head"><span class="idx">05</span><h2>Capabilities &amp; Tools</h2></div>
+    <div class="two-col">
+      <div>
+        <span class="ck-label" style="margin-bottom:16px;">Design Capabilities</span>
+        <div class="pill-grid">
+          <span class="pill">Presentation Design</span>
+          <span class="pill">Layout Design</span>
+          <span class="pill">Typography &amp; Visual Hierarchy</span>
+          <span class="pill">Data Visualization</span>
+          <span class="pill">Visual Storytelling</span>
+          <span class="pill">Brand-aligned Communication</span>
+        </div>
+      </div>
+      <div>
+        <span class="ck-label" style="margin-bottom:16px;">Tools &amp; Platforms</span>
+        <ul class="tool-list">
+          <li>Power BI <span>Dashboards</span></li>
+          <li>Power Apps <span>Workflow</span></li>
+          <li>Power Automate <span>Automation</span></li>
+          <li>Microsoft Office Suite <span>Production</span></li>
+          <li>Workflow Automation Tools <span>Operations</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="impact">
+  <div class="wrap">
+    <div class="section-head"><span class="idx">06</span><h2>Impact Summary</h2></div>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <span class="glyph">01</span>
+        <p>Built scalable creative operations supporting global investment banking clients</p>
+      </div>
+      <div class="impact-card">
+        <span class="glyph">02</span>
+        <p>Implemented automation that improved workflow transparency and efficiency</p>
+      </div>
+      <div class="impact-card">
+        <span class="glyph">03</span>
+        <p>Ensured consistent visual communication standards across high-stakes financial deliverables</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-band">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <h2>Creative Operations &amp; Design Leadership</h2>
+        <p>Based in Chennai, India — open to roles in design operations leadership, creative workflow strategy, and global creative delivery management.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:iyapsraji2023@gmail.com">Email <span class="arrow">→</span></a>
+        <a href="https://www.linkedin.com/in/iyapsraji/" target="_blank" rel="noopener">LinkedIn <span class="arrow">→</span></a>
+        <a href="https://iyappancrajamanager.my.canva.site/" target="_blank" rel="noopener">Profile <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Iyappan C — Creative Operations &amp; Design Leadership · Chennai, India
+</footer>
+
+</body>
+</html>
