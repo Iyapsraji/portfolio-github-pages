@@ -1,249 +1,397 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Operations & Client Management Leader</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iyappan Chandrasekar — Creative Production Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14283F;
+    --ink-soft:#28405C;
+    --paper:#F6F3EC;
+    --paper-deep:#EEE9DC;
+    --gold:#B8863B;
+    --gold-soft:#D8B876;
+    --slate:#5B6B7A;
+    --charcoal:#262420;
+    --line:#D9D2C2;
+    --white:#FFFDF8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--charcoal);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:500;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    color:var(--ink);
+    letter-spacing:-.01em;
+  }
+  a{color:inherit;}
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial, Helvetica, sans-serif;
-        }
+  /* ---- deck frame: every section is a "slide" ---- */
+  .slide{
+    position:relative;
+    max-width:980px;
+    margin:0 auto;
+    padding:64px 56px 48px;
+    border-left:1px solid var(--line);
+    border-right:1px solid var(--line);
+  }
+  .slide + .slide{border-top:1px solid var(--line);}
+  .slide-foot{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:40px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:.08em;
+    color:var(--slate);
+    text-transform:uppercase;
+  }
 
-        body{
-            background:#f5f7fa;
-            color:#333;
-            line-height:1.7;
-        }
+  /* ---- nav ---- */
+  nav{
+    position:sticky; top:0; z-index:10;
+    background:rgba(246,243,236,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:980px; margin:0 auto;
+    padding:16px 56px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .nav-name{font-family:'Fraunces',serif; font-size:15px; color:var(--ink); font-weight:600;}
+  .nav-links{display:flex; gap:28px; font-size:12.5px; letter-spacing:.04em;}
+  .nav-links a{text-decoration:none; color:var(--slate);}
+  .nav-links a:hover{color:var(--gold);}
 
-        .container{
-            width:90%;
-            max-width:1200px;
-            margin:auto;
-        }
+  /* ---- hero / cover slide ---- */
+  .cover{
+    background:var(--ink);
+    color:var(--white);
+    border-color:var(--ink);
+  }
+  .cover .eyebrow{color:var(--gold-soft);}
+  .cover h1{
+    color:var(--white);
+    font-size:clamp(38px,5.4vw,58px);
+    line-height:1.05;
+    margin:18px 0 20px;
+    max-width:9.5em;
+  }
+  .cover p.role{
+    font-size:17px; color:#C9D3DD; max-width:36em; margin-bottom:32px;
+  }
+  .cover .meta{
+    display:flex; gap:32px; flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:#9FB0C2;
+  }
+  .cover .slide-foot{border-top-color:rgba(255,255,255,.16); color:#7E90A3;}
 
-        /* Hero Section */
+  /* ---- stat bar ---- */
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .stat{
+    background:var(--white);
+    padding:26px 20px;
+    text-align:center;
+  }
+  .stat .num{font-family:'Fraunces',serif; font-size:30px; color:var(--gold); font-weight:600;}
+  .stat .label{font-size:12px; color:var(--slate); margin-top:6px;}
 
-        .hero{
-            background:linear-gradient(135deg,#0F4C81,#1E88E5);
-            color:#fff;
-            padding:80px 0;
-        }
+  /* ---- section headers ---- */
+  .slide h2{font-size:28px; margin:14px 0 6px;}
+  .slide .lede{color:var(--slate); max-width:42em; font-size:15px; margin-bottom:36px;}
 
-        .hero h1{
-            font-size:42px;
-            margin-bottom:15px;
-        }
+  /* ---- case study cards ---- */
+  .case{
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    gap:36px;
+    padding:32px 0;
+    border-top:1px solid var(--line);
+    align-items:start;
+  }
+  .case:first-of-type{border-top:none;}
+  .case-visual{
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    aspect-ratio:4/3;
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .case-visual .tag{
+    position:absolute; top:10px; left:10px;
+    font-family:'IBM Plex Mono',monospace; font-size:9.5px;
+    letter-spacing:.08em; text-transform:uppercase;
+    color:var(--slate); background:var(--white);
+    padding:3px 7px; border:1px solid var(--line);
+  }
+  .case-num{font-family:'Fraunces',serif; font-size:15px; color:var(--gold); margin-bottom:6px;}
+  .case h3{font-size:19px; margin-bottom:6px;}
+  .case .client{font-size:13px; color:var(--slate); margin-bottom:14px;}
+  .case p{font-size:14.5px; color:var(--charcoal); margin-bottom:14px;}
+  .case .tools{
+    display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;
+  }
+  .case .tools span{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px;
+    border:1px solid var(--line); padding:4px 8px; color:var(--ink-soft);
+  }
 
-        .hero h2{
-            font-size:22px;
-            font-weight:400;
-            color:#dceeff;
-            margin-bottom:30px;
-        }
+  /* mock slide graphics (abstract, brand-colored — placeholders) */
+  .mock{width:78%; height:70%; background:var(--white); border:1px solid var(--line); position:relative;}
+  .mock .bar{position:absolute; background:var(--ink);}
+  .mock .bar.gold{background:var(--gold);}
+  .mock .bar.slate{background:var(--slate); opacity:.5;}
 
-        .hero p{
-            max-width:900px;
-            font-size:18px;
-        }
+  /* ---- skills slide ---- */
+  .skill-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:0;
+    border-top:1px solid var(--line); border-left:1px solid var(--line);
+  }
+  .skill-group{
+    padding:22px 24px; border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .skill-group .eyebrow{margin-bottom:10px; display:block;}
+  .skill-group ul{list-style:none;}
+  .skill-group li{
+    font-size:14px; padding:4px 0; color:var(--charcoal);
+    border-bottom:1px dotted var(--line);
+  }
+  .skill-group li:last-child{border-bottom:none;}
 
-        /* Section */
+  /* ---- contact slide ---- */
+  .contact{background:var(--ink); color:var(--white); border-color:var(--ink);}
+  .contact h2{color:var(--white);}
+  .contact .lede{color:#B9C4CF;}
+  .contact-row{
+    display:flex; gap:40px; flex-wrap:wrap; margin-top:24px;
+  }
+  .contact-item .eyebrow{color:var(--gold-soft); margin-bottom:6px; display:block;}
+  .contact-item a, .contact-item span{font-size:15px; color:var(--white); text-decoration:none;}
+  .contact-item a:hover{color:var(--gold-soft);}
+  .contact .slide-foot{border-top-color:rgba(255,255,255,.16); color:#7E90A3;}
 
-        section{
-            padding:70px 0;
-        }
-
-        section h2{
-            color:#0F4C81;
-            margin-bottom:25px;
-            font-size:32px;
-        }
-
-        /* Expertise */
-
-        .expertise-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-            gap:20px;
-        }
-
-        .expertise-item{
-            background:#fff;
-            padding:18px;
-            border-radius:10px;
-            box-shadow:0 4px 10px rgba(0,0,0,.08);
-            transition:.3s;
-        }
-
-        .expertise-item:hover{
-            transform:translateY(-5px);
-        }
-
-        /* Case Study */
-
-        .case-study{
-            background:#fff;
-            padding:35px;
-            border-radius:12px;
-            box-shadow:0 5px 15px rgba(0,0,0,.08);
-        }
-
-        .case-study h3{
-            color:#0F4C81;
-            margin-bottom:8px;
-        }
-
-        .highlight{
-            color:#1E88E5;
-            font-weight:bold;
-            margin-bottom:25px;
-            display:block;
-        }
-
-        .case-study h4{
-            margin-top:20px;
-            color:#444;
-        }
-
-        .case-study ul{
-            margin-top:10px;
-            margin-left:20px;
-        }
-
-        .results li{
-            font-weight:600;
-            color:#0F4C81;
-        }
-    </style>
-
+  @media (max-width:720px){
+    .slide{padding:44px 22px 32px;}
+    .nav-inner{padding:14px 22px;}
+    .nav-links{gap:16px;}
+    .case{grid-template-columns:1fr;}
+    .stats{grid-template-columns:1fr 1fr;}
+    .skill-grid{grid-template-columns:1fr;}
+  }
+</style>
 </head>
 <body>
 
-    <!-- Hero Section -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-name">Iyappan Chandrasekar</div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
 
-    <header class="hero">
-        <div class="container">
+<!-- COVER SLIDE -->
+<section class="slide cover">
+  <span class="eyebrow">Portfolio — Deck 01</span>
+  <h1>Corporate creative production, built like the decks it delivers.</h1>
+  <p class="role">Creative Supervisor with 20+ years leading pitch-book, presentation, and brand-collateral production for global investment banking and professional-services clients — Adobe Creative Suite execution paired with scrum-run team leadership.</p>
+  <div class="meta">
+    <span>CHENNAI, INDIA</span>
+    <span>ADOBE CREATIVE SUITE</span>
+    <span>SCRUM-LED DELIVERY</span>
+  </div>
+  <div class="slide-foot">
+    <span>Strictly for review — Iyappan Chandrasekar</span>
+    <span>01</span>
+  </div>
+</section>
 
-            <h1>Creative Operations & Client Management Leader</h1>
+<!-- STATS SLIDE -->
+<section class="slide">
+  <span class="eyebrow">At a glance</span>
+  <h2>Track record</h2>
+  <p class="lede">Two decades split between hands-on design execution and the operational leadership that keeps creative teams shipping on brand and on time.</p>
+  <div class="stats">
+    <div class="stat"><div class="num">60%</div><div class="label">SLA turnaround improvement</div></div>
+    <div class="stat"><div class="num">25%</div><div class="label">Operational efficiency gain</div></div>
+    <div class="stat"><div class="num">12 yrs</div><div class="label">IB pitch-book production</div></div>
+    <div class="stat"><div class="num">20+</div><div class="label">Years in creative ops</div></div>
+  </div>
+  <div class="slide-foot">
+    <span>Portfolio — Iyappan Chandrasekar</span>
+    <span>02</span>
+  </div>
+</section>
 
-            <h2>Global Finance</h2>
+<!-- WORK / CASE STUDIES -->
+<section class="slide" id="work">
+  <span class="eyebrow">Selected work</span>
+  <h2>Case studies</h2>
+  <p class="lede">Representative project types from client-facing creative production work. Visuals below are brand-style placeholders — swap in real deck spreads and before/after comparisons here.</p>
 
-            <p>
-                Creative operations and client management leader combining two decades of experience in
-                high-impact visual communication and pitch book delivery for global investment banking
-                teams, alongside direct people and client management — leading teams of 150+, owning
-                client escalations, performance metrics, and SLA outcomes.
-            </p>
+  <div class="case">
+    <div class="case-visual">
+      <span class="tag">Add screenshot</span>
+      <div class="mock">
+        <div class="bar" style="top:14%;left:8%;width:40%;height:8%;"></div>
+        <div class="bar gold" style="top:14%;right:8%;width:22%;height:8%;"></div>
+        <div class="bar slate" style="top:34%;left:8%;width:84%;height:3%;"></div>
+        <div class="bar slate" style="top:42%;left:8%;width:60%;height:3%;"></div>
+        <div class="bar" style="bottom:12%;left:8%;width:26%;height:22%;"></div>
+        <div class="bar gold" style="bottom:12%;left:38%;width:26%;height:14%;"></div>
+        <div class="bar slate" style="bottom:12%;left:68%;width:26%;height:30%;opacity:.35;"></div>
+      </div>
+    </div>
+    <div>
+      <div class="case-num">01</div>
+      <h3>Sell-Side Pitch Book Redesign</h3>
+      <div class="client">Global Investment Bank — Creative Services Engagement</div>
+      <p>Rebuilt the master pitch-book template system used across a client's deal teams — standardizing chart treatments, cover-slide hierarchy, and appendix formatting to cut per-deck production time while keeping every deliverable brand-compliant under deadline pressure.</p>
+      <div class="tools"><span>InDesign</span><span>Illustrator</span><span>PowerPoint</span><span>Brand Governance</span></div>
+    </div>
+  </div>
 
-        </div>
-    </header>
+  <div class="case">
+    <div class="case-visual">
+      <span class="tag">Add screenshot</span>
+      <div class="mock">
+        <div class="bar" style="top:10%;left:10%;width:80%;height:6%;"></div>
+        <div class="bar gold" style="top:24%;left:10%;width:35%;height:34%;"></div>
+        <div class="bar slate" style="top:24%;left:50%;width:40%;height:16%;opacity:.4;"></div>
+        <div class="bar" style="top:44%;left:50%;width:40%;height:14%;"></div>
+        <div class="bar slate" style="bottom:10%;left:10%;width:80%;height:4%;opacity:.35;"></div>
+      </div>
+    </div>
+    <div>
+      <div class="case-num">02</div>
+      <h3>Executive Reporting Dashboard Suite</h3>
+      <div class="client">AGS Health India — Internal Leadership Reporting</div>
+      <p>Designed a Power BI dashboard system for SLA and productivity reporting, applying the same visual-hierarchy and brand-consistency principles used in client presentation work to internal leadership reporting — improving readability at a glance for non-technical stakeholders.</p>
+      <div class="tools"><span>Power BI</span><span>Information Design</span><span>Brand Consistency</span></div>
+    </div>
+  </div>
 
-    <!-- Core Expertise -->
+  <div class="case">
+    <div class="case-visual">
+      <span class="tag">Add screenshot</span>
+      <div class="mock">
+        <div class="bar" style="top:16%;left:12%;width:76%;height:10%;"></div>
+        <div class="bar gold" style="top:34%;left:12%;width:22%;height:22%;"></div>
+        <div class="bar" style="top:34%;left:39%;width:22%;height:22%;opacity:.85;"></div>
+        <div class="bar slate" style="top:34%;left:66%;width:22%;height:22%;opacity:.4;"></div>
+        <div class="bar slate" style="bottom:14%;left:12%;width:76%;height:4%;opacity:.3;"></div>
+      </div>
+    </div>
+    <div>
+      <div class="case-num">03</div>
+      <h3>Creative Team Mentorship Program</h3>
+      <div class="client">Williams Lea India — Junior Designer Coaching</div>
+      <p>Ran a structured coaching cadence for junior and mid-level creative staff — regular design reviews, presentation-craft feedback, and brand-guideline training — folded into a scrum-based workflow of stand-ups, sprint planning, and retrospectives.</p>
+      <div class="tools"><span>Team Leadership</span><span>Scrum Ceremonies</span><span>Design Coaching</span></div>
+    </div>
+  </div>
+</section>
 
-    <section id="expertise">
+<!-- SKILLS -->
+<section class="slide" id="skills">
+  <span class="eyebrow">Capabilities</span>
+  <h2>Tools & disciplines</h2>
+  <p class="lede">The overlap between design execution and creative operations leadership.</p>
+  <div class="skill-grid">
+    <div class="skill-group">
+      <span class="eyebrow">Design execution</span>
+      <ul>
+        <li>Adobe InDesign</li>
+        <li>Adobe Illustrator</li>
+        <li>Adobe Photoshop</li>
+        <li>Presentation & pitch-book design</li>
+        <li>Brand guideline application</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <span class="eyebrow">Creative operations</span>
+      <ul>
+        <li>Workflow prioritization</li>
+        <li>Scrum ceremonies (stand-ups, sprint planning, retros)</li>
+        <li>Resource & capacity planning</li>
+        <li>SLA / KPI / TAT governance</li>
+        <li>Escalation management</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <span class="eyebrow">Team leadership</span>
+      <ul>
+        <li>Mentorship & coaching</li>
+        <li>Performance reviews</li>
+        <li>Talent development</li>
+        <li>Cross-functional collaboration</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <span class="eyebrow">Reporting & analytics</span>
+      <ul>
+        <li>Power BI dashboards</li>
+        <li>Microsoft Power Platform</li>
+        <li>Lean Six Sigma process design</li>
+        <li>AI-assisted creative workflows</li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-foot">
+    <span>Portfolio — Iyappan Chandrasekar</span>
+    <span>04</span>
+  </div>
+</section>
 
-        <div class="container">
-
-            <h2>Core Expertise</h2>
-
-            <div class="expertise-grid">
-
-                <div class="expertise-item">
-                    Client Relationship & Escalation Management
-                </div>
-
-                <div class="expertise-item">
-                    People Management (150+ Team) – Appraisals, Leave Management & Coaching
-                </div>
-
-                <div class="expertise-item">
-                    Performance Metrics & KPI Management
-                </div>
-
-                <div class="expertise-item">
-                    Situation Management
-                </div>
-
-                <div class="expertise-item">
-                    Advanced Excel – Historical Analysis & SLA Insight Generation
-                </div>
-
-                <div class="expertise-item">
-                    Power BI Dashboard Development
-                </div>
-
-                <div class="expertise-item">
-                    Power Apps Process Automation
-                </div>
-
-                <div class="expertise-item">
-                    Power Automate Workflow Automation
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- Case Study -->
-
-    <section id="case-study">
-
-        <div class="container">
-
-            <h2>Case Study</h2>
-
-            <div class="case-study">
-
-                <h3>Client & People Management at Scale</h3>
-
-                <span class="highlight">
-                    150+ Team Members | 60% SLA Improvement
-                </span>
-
-                <h4>Challenge</h4>
-
-                <p>
-                    Growing client accounts required consistent SLA delivery, rapid escalation resolution,
-                    and a stable, well-managed team without compromising the quality of creative delivery.
-                </p>
-
-                <h4>Actions</h4>
-
-                <ul>
-                    <li>
-                        Directly managed a team of 150+, including appraisals, leave management,
-                        performance reviews, and coaching.
-                    </li>
-
-                    <li>
-                        Developed Power BI dashboards and Advanced Excel models to analyze historical
-                        performance, identify SLA trends, and uncover continuous improvement opportunities.
-                    </li>
-
-                    <li>
-                        Automated recurring client reporting and escalation routing using
-                        Microsoft Power Apps and Power Automate.
-                    </li>
-                </ul>
-
-                <h4>Results</h4>
-
-                <ul class="results">
-                    <li>60% improvement in SLA compliance and turnaround time.</li>
-                    <li>Reduced manual reporting effort through workflow automation.</li>
-                    <li>Improved client trust with faster and more consistent escalation management.</li>
-                </ul>
-
-            </div>
-
-        </div>
-
-    </section>
+<!-- CONTACT -->
+<section class="slide contact" id="contact">
+  <span class="eyebrow">Get in touch</span>
+  <h2>Let's talk about the role</h2>
+  <p class="lede">Open to Creative Supervisor and creative production leadership roles. Based in Chennai, open to relocation.</p>
+  <div class="contact-row">
+    <div class="contact-item"><span class="eyebrow">Email</span><a href="mailto:iyapsraji2023@gmail.com">iyapsraji2023@gmail.com</a></div>
+    <div class="contact-item"><span class="eyebrow">Phone</span><span>+91 7871029933</span></div>
+    <div class="contact-item"><span class="eyebrow">LinkedIn</span><a href="https://linkedin.com/in/iyapsraji/" target="_blank" rel="noopener">linkedin.com/in/iyapsraji</a></div>
+    <div class="contact-item"><span class="eyebrow">Resume</span><a href="https://iyapsraji.github.io/resume-github-pages/" target="_blank" rel="noopener">View online resume</a></div>
+  </div>
+  <div class="slide-foot">
+    <span>End of deck</span>
+    <span>05</span>
+  </div>
+</section>
 
 </body>
 </html>
